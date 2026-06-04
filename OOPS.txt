@@ -1,0 +1,573 @@
+oops questions :
+
+
+1. Single Inheritance
+Question 1
+
+Create a class Person with:
+
+name
+age
+display_person()
+
+Create a class Student that inherits Person and adds:
+
+roll_no
+display_student()
+
+Print all details.
+
+SOLUTION:
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display_person(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+
+class Student(Person):
+    def __init__(self, name, age, roll_no):
+        super().__init__(name, age)
+        self.roll_no = roll_no
+
+    def display_student(self):
+        self.display_person()
+        print("Roll No:", self.roll_no)
+
+
+name = input("Enter name: ")
+age = int(input("Enter age: "))
+roll_no = input("Enter roll number: ")
+
+s = Student(name, age, roll_no)
+
+print("\nStudent Details")
+s.display_student()
+
+Question 2
+
+Create a class Vehicle with:
+
+brand
+show_brand()
+
+Create a class Car inheriting Vehicle with:
+
+model
+show_model()
+
+Access both methods using a Car object.
+
+2. Multilevel Inheritance
+SOLUTION:
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def show_brand(self):
+        print("Brand:", self.brand)
+
+
+class Car(Vehicle):
+    def __init__(self, brand, model):
+        super().__init__(brand)
+        self.model = model
+
+    def show_model(self):
+        print("Model:", self.model)
+
+
+c = Car("Toyota", "Corolla")
+
+c.show_brand()
+c.show_model()
+
+Question 3
+
+Create the hierarchy:
+
+Animal
+   ↓
+Dog
+   ↓
+Puppy
+
+Methods:
+
+Animal → eat()
+Dog → bark()
+Puppy → weep()
+
+Create a Puppy object and call all methods.
+
+SOLUTION:
+class Animal:
+    def eat(self):
+        print("Animal is eating")
+
+
+class Dog(Animal):
+    def bark(self):
+        print("Dog is barking")
+
+
+class Puppy(Dog):
+    def weep(self):
+        print("Puppy is weeping")
+
+
+p = Puppy()
+
+p.eat()
+p.bark()
+p.weep()
+
+Question 4
+
+Create the hierarchy:
+
+Person
+   ↓
+Employee
+   ↓
+Manager
+
+Attributes:
+
+Person → name
+Employee → salary
+Manager → department
+
+Display all details.
+
+3. Multiple Inheritance
+SOLUTION:
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+
+class Employee(Person):
+    def __init__(self, name, salary):
+        super().__init__(name)
+        self.salary = salary
+
+
+class Manager(Employee):
+    def __init__(self, name, salary, department):
+        super().__init__(name, salary)
+        self.department = department
+
+    def display(self):
+        print("Name:", self.name)
+        print("Salary:", self.salary)
+        print("Department:", self.department)
+
+
+m = Manager("Uthra", 50000, "HR")
+m.display()
+
+Question 5
+
+Create:
+
+Father      Mother
+     \      /
+      Child
+
+Methods:
+
+Father → bike()
+Mother → jewellery()
+Child inherits both
+
+Call both methods using Child object.
+SOLUTION:
+class Father:
+    def bike(self):
+        print("Father owns a bike")
+
+
+class Mother:
+    def jewellery(self):
+        print("Mother owns jewellery")
+
+
+class Child(Father, Mother):
+    pass
+
+
+c = Child()
+
+c.bike()
+c.jewellery()
+
+Question 6
+
+Create:
+
+Teacher      Researcher
+       \     /
+       Professor
+
+Methods:
+
+teach()
+research()
+
+Professor should access both.
+
+4. Hierarchical Inheritance
+SOLUTION:
+class Teacher:
+    def teach(self):
+        print("Teaching students")
+
+
+class Researcher:
+    def research(self):
+        print("Doing research")
+
+
+class Professor(Teacher, Researcher):
+    pass
+
+
+p = Professor()
+
+p.teach()
+p.research()
+
+Question 7
+
+Create:
+
+        Shape
+      /   |   \
+ Circle Rectangle Triangle
+
+Each child class should have its own draw() method.
+SOLUTION:
+class Shape:
+    def display(self):
+        print("This is a shape")
+
+
+class Circle(Shape):
+    def draw(self):
+        print("Drawing a Circle")
+
+
+class Rectangle(Shape):
+    def draw(self):
+        print("Drawing a Rectangle")
+
+
+class Triangle(Shape):
+    def draw(self):
+        print("Drawing a Triangle")
+
+
+c = Circle()
+r = Rectangle()
+t = Triangle()
+
+c.draw()
+r.draw()
+t.draw()
+
+Question 8
+
+Create:
+
+          Employee
+         /        \
+ Developer      Tester
+
+Methods:
+
+work()
+
+Developer and Tester should inherit Employee.
+
+5. Hybrid Inheritance
+SOLUTION:
+class Employee:
+    def work(self):
+        print("Employee is working")
+
+
+class Developer(Employee):
+    pass
+
+
+class Tester(Employee):
+    pass
+
+
+d = Developer()
+t = Tester()
+
+d.work()
+t.work()
+
+Question 9
+
+Create:
+
+        A
+      /   \
+     B     C
+      \   /
+        D
+
+Methods:
+
+A → methodA()
+B → methodB()
+C → methodC()
+D → methodD()
+
+Call all methods using D object.
+SOLUTION:
+class A:
+    def methodA(self):
+        print("Method A")
+
+
+class B(A):
+    def methodB(self):
+        print("Method B")
+
+
+class C(A):
+    def methodC(self):
+        print("Method C")
+
+
+class D(B, C):
+    def methodD(self):
+        print("Method D")
+
+
+obj = D()
+
+obj.methodA()
+obj.methodB()
+obj.methodC()
+obj.methodD()
+
+Question 10
+
+Create a company structure:
+
+          Employee
+          /      \
+      Manager   Developer
+          \      /
+          TeamLead
+
+TeamLead should access methods from all parent classes.
+
+Constructor-Based Questions
+SOLUTION:
+class Employee:
+    def employee_info(self):
+        print("Employee details")
+
+
+class Manager(Employee):
+    def manage(self):
+        print("Managing the team")
+
+
+class Developer(Employee):
+    def develop(self):
+        print("Developing software")
+
+
+class TeamLead(Manager, Developer):
+    def lead(self):
+        print("Leading the project")
+
+
+t = TeamLead()
+
+t.employee_info()
+t.manage()
+t.develop()
+t.lead()
+
+Question 11
+
+Create:
+
+Person
+   ↓
+Student
+
+Use constructors in both classes and initialize data using super().
+SOLUTION:
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+
+class Student(Person):
+    def __init__(self, name, roll_no):
+        super().__init__(name)
+        self.roll_no = roll_no
+
+    def display(self):
+        print("Name:", self.name)
+        print("Roll No:", self.roll_no)
+
+
+s = Student("Uthra", 101)
+s.display()
+
+Question 12
+
+Create:
+
+Vehicle
+   ↓
+Car
+
+Use constructor inheritance and display:
+
+brand
+model
+price
+Real-Time Questions
+SOLUTION:
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+
+class Car(Vehicle):
+    def __init__(self, brand, model, price):
+        super().__init__(brand)
+        self.model = model
+        self.price = price
+
+    def display(self):
+        print("Brand:", self.brand)
+        print("Model:", self.model)
+        print("Price:", self.price)
+
+
+c = Car("Toyota", "Corolla", 1500000)
+c.display()
+
+Question 13: Banking System
+Account
+   ↓
+SavingsAccount
+
+Parent:
+
+account_number
+balance
+
+Child:
+
+interest_rate
+
+Display account information.
+SOLUTION:
+class Account:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.balance = balance
+
+
+class SavingsAccount(Account):
+    def __init__(self, account_number, balance, interest_rate):
+        super().__init__(account_number, balance)
+        self.interest_rate = interest_rate
+
+    def display(self):
+        print("Account Number:", self.account_number)
+        print("Balance:", self.balance)
+        print("Interest Rate:", self.interest_rate, "%")
+
+
+s = SavingsAccount(123456789, 50000, 6.5)
+s.display()
+
+Question 14: School Management
+Person
+   ↓
+Teacher
+
+Parent:
+
+name
+age
+
+Child:
+
+subject
+
+Display teacher details.
+SOLUTION:
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+class Teacher(Person):
+    def __init__(self, name, age, subject):
+        super().__init__(name, age)
+        self.subject = subject
+
+    def display(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Subject:", self.subject)
+
+
+t = Teacher("Anitha", 35, "Mathematics")
+t.display()
+
+Question 15: Online Shopping
+Product
+   ↓
+Electronics
+
+Parent:
+
+product_name
+price
+
+Child:
+
+warranty
+
+Display complete product information.
+SOLUTION:
+class Product:
+    def __init__(self, product_name, price):
+        self.product_name = product_name
+        self.price = price
+
+
+class Electronics(Product):
+    def __init__(self, product_name, price, warranty):
+        super().__init__(product_name, price)
+        self.warranty = warranty
+
+    def display(self):
+        print("Product Name:", self.product_name)
+        print("Price:", self.price)
+        print("Warranty:", self.warranty)
+
+
+e = Electronics("Laptop", 50000, "2 Years")
+e.display()
